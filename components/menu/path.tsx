@@ -1,21 +1,20 @@
 import {useRouter} from 'next/router'
-import {CSSProperties} from "react"
-export default function Path({link, icon, title}: {link: string, icon: JSX.Element, title: string}){
+import React, {CSSProperties, AnchorHTMLAttributes} from "react"
+export default function Path({link, icon, title, className}: AnchorHTMLAttributes<any> & {link: string, icon: JSX.Element, title: string}){
 	const router = useRouter()
-	const style: CSSProperties = {
-		marginRight: 10,
-		color: router.pathname === link ? 'red' : 'black'
-	}
+	const customStyle: CSSProperties = router.pathname === link ? {
+		color: 'salmon',
+		filter: `drop-shadow(0 0 0.2em currentColor)`
+	} : null
 
 	const handleClick = (e) => {
 		e.preventDefault()
-		router.push(link)
+		router.push(link).catch(e => console.error(e))
 	}
 
 	return (
-		<a href={link} className={' flex flex-1 items-center justify-center'} title={title} style={style} onClick={handleClick}>
-			<span className={'mr-4'}>{icon}</span>
-			<span>{title}</span>
+		<a className={className} title={title} onClick={handleClick}>
+			<span style={customStyle}>{icon}</span>
 		</a>
 	)
 }

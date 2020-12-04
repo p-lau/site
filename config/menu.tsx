@@ -1,8 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
-	faQuestionCircle,
-	faMicrophone,
-	faHome
+	faAddressCard,
+	faBriefcase,
+	faHome,
+	faPenSquare
 } from "@fortawesome/free-solid-svg-icons"
 
 const navButtons = [
@@ -12,14 +13,19 @@ const navButtons = [
 		icon: <FontAwesomeIcon icon={faHome}/>
 	},
 	{
-		title: "Blog",
+		title: "Posts",
 		link: "/posts",
-		icon: <FontAwesomeIcon icon={faMicrophone} />
+		icon: <FontAwesomeIcon icon={faPenSquare}/>
+	},
+	{
+		title: "Projects",
+		link: "/projects",
+		icon: <FontAwesomeIcon icon={faBriefcase} />
 	},
 	{
 		title: "About Me",
 		link: "/about",
-		icon: <FontAwesomeIcon icon={faQuestionCircle} />
+		icon: <FontAwesomeIcon icon={faAddressCard} />
 	},
 ]
 

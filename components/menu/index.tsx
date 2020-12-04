@@ -1,13 +1,13 @@
 import Path from "./path"
 import navLinks from "../../config/menu"
+import styles from './menu.module.css'
 
 export default function Menu(){
 
-
 	return(
-		<header className={'flex flex-row divide-x divide-solid divide-rose-400'}>
+		<header className={styles.menu}>
 			{navLinks.map(({title, link, icon}, i) => (
-				<Path key={i} icon={icon} link={link} title={title}/>
+				<Path className={styles.menuItem} key={i} icon={icon} link={link} title={title}/>
 			))}
 		</header>
 	)

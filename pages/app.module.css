@@ -1,0 +1,28 @@
+.display {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+}
+
+.main {
+    padding-left: 1em;
+    background-color: #234;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (orientation: portrait) {
+    .display {
+        grid-auto-flow: column;
+        grid-auto-columns: max-content auto;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .display {
+        grid-auto-flow: row;
+        grid-auto-rows: min-content auto;
+    }
+}

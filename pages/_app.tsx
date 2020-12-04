@@ -1,15 +1,19 @@
 import {AppProps} from 'next/app'
-import './normalize.css'
-import "tailwindcss/tailwind.css"
+import '../public/normalize.css'
 import Menu from "../components/menu/"
+import Content from "../components/content"
+import appStyle from './app.module.css'
 
 export default function App({ Component, pageProps }: AppProps){
+
 	return(
-		<div className={'w-screen h-screen grid grid-rows-app-layout'}>
-			<main>
-				<Component {...pageProps} />
-			</main>
+		<div className={appStyle.display}>
 			<Menu/>
+			<div className={appStyle.main}>
+				<Content>
+					<Component {...pageProps} />
+				</Content>
+			</div>
 		</div>
 	)
 }
