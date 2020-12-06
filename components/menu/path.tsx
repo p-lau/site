@@ -1,11 +1,10 @@
 import {useRouter} from 'next/router'
-import React, {CSSProperties, AnchorHTMLAttributes} from "react"
+import {AnchorHTMLAttributes} from "react"
+import styles from './menu.module.css'
+
 export default function Path({link, icon, title, className}: AnchorHTMLAttributes<any> & {link: string, icon: JSX.Element, title: string}){
 	const router = useRouter()
-	const customStyle: CSSProperties = router.pathname === link ? {
-		color: 'salmon',
-		filter: `drop-shadow(0 0 0.2em currentColor)`
-	} : null
+	const customStyle = router.pathname.startsWith(link) ? styles.active : ''
 
 	const handleClick = (e) => {
 		e.preventDefault()
@@ -13,8 +12,10 @@ export default function Path({link, icon, title, className}: AnchorHTMLAttribute
 	}
 
 	return (
-		<a className={className} title={title} onClick={handleClick}>
-			<span style={customStyle}>{icon}</span>
-		</a>
+		<>
+			<a className={[className, customStyle].join(' ')} title={title} onClick={handleClick}>
+				{icon}
+			</a>
+		</>
 	)
 }
